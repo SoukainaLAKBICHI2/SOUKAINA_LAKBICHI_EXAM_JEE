@@ -1,0 +1,27 @@
+<div class="container mt-4">
+
+  <div *ngIf="error" class="alert alert-danger text-center">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!isLoading && !error && clients.length > 0" class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.id }}</td>
+      <td>{{ client.nom }}</td>
+      <td>{{ client.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!isLoading && !error && clients.length === 0" class="alert alert-warning text-center">
+    Aucun client trouvé.
+  </div>
+</div>

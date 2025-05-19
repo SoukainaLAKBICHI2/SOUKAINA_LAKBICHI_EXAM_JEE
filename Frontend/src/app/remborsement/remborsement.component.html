@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <div *ngIf="isLoading" class="alert alert-info text-center">
+    Chargement des remboursements...
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!isLoading && !error && remboursements.length > 0" class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let remboursement of remboursement">
+      <td>{{ remboursement.id }}</td>
+      <td>{{ remboursement.date | date: 'shortDate' }}</td>
+      <td>{{ remboursement.montant | number:'1.2-2' }} DH</td>
+      <td>
+          <span [ngClass]="{
+            'badge bg-success': remboursement.type === 'Mensualité',
+            'badge bg-warning text-dark': remboursement.type === 'Remboursement anticipé'
+          }">
+            {{ remboursement.type }}
+          </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!isLoading && !error && remboursements.length === 0" class="alert alert-warning text-center">
+    Aucun remboursement trouvé.
+  </div>
+</div>
