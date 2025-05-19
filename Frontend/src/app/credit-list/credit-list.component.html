@@ -1,0 +1,33 @@
+<div *ngIf="isLoading" class="text-center my-3">
+  <div class="spinner-border text-primary"></div>
+  <p>Chargement des crédits...</p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table *ngIf="!isLoading && !error && credits.length > 0" class="table table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Date Demande</th>
+    <th>Statut</th>
+    <th>Montant</th>
+    <th>Durée</th>
+    <th>Taux</th>
+    <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let credit of credits">
+    <td>{{ credit.id }}</td>
+    <td>{{ credit.dateDemande }}</td>
+    <td>{{ credit.statut }}</td>
+    <td>{{ credit.montant }} MAD</td>
+    <td>{{ credit.dureeRemboursement }} mois</td>
+    <td>{{ credit.tauxInteret }}%</td>
+    <td>{{ credit.type }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!isLoading && !error && credits.length === 0" class="alert alert-info">Aucun crédit trouvé.</div>
