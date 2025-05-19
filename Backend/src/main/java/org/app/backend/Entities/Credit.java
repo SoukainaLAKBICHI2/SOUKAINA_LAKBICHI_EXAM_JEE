@@ -30,4 +30,6 @@ public abstract class Credit {
 
     @OneToMany(mappedBy = "credit")
     private List<Remboursement> remboursements;
+
+
 }
