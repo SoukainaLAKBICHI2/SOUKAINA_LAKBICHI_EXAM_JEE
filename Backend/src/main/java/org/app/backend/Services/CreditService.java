@@ -5,17 +5,20 @@ import org.app.backend.Entities.Credit;
 import org.app.backend.Entities.StatutCredit;
 import org.app.backend.Repositories.ClientRepository;
 import org.app.backend.Repositories.CreditRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class CreditService {
 
     private final CreditRepository creditRepository;
     private final ClientRepository clientRepository;
-
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN','SCOPE_CLIENT')")
     public List<Credit> getAllCredits() {
         return creditRepository.findAll();
     }

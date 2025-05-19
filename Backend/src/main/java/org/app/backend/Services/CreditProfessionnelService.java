@@ -6,11 +6,13 @@ import org.app.backend.Entities.CreditProfessionnel;
 import org.app.backend.Repositories.ClientRepository;
 import org.app.backend.Repositories.CreditProfessionnelRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class CreditProfessionnelService {
     private final CreditProfessionnelRepository professionnelRepo;
     private final ClientRepository clientRepository;

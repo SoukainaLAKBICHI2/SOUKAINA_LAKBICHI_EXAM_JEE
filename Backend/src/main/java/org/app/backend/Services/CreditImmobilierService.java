@@ -6,11 +6,13 @@ import org.app.backend.Entities.CreditImmobilier;
 import org.app.backend.Repositories.ClientRepository;
 import org.app.backend.Repositories.CreditImmobilierRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class CreditImmobilierService {
     private final CreditImmobilierRepository immobilierRepo;
     private final ClientRepository clientRepository;
